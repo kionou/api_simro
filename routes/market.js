@@ -6,7 +6,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', (req, res) => {
     axios
-    .get('https://simro-kberthe.pythonanywhere.com/api/liste-marche/')
+    .get('http://simro-kberthe.pythonanywhere.com/api/liste-marche/')
     .then((resul) =>{
       console.log("ee",resul.data);
       res.json(resul.data)
