@@ -6,8 +6,7 @@ var logger = require('morgan');
 var cors = require('cors')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var marketRouter = require('./routes/market');
+var marketRouter = require('./routes/simro');
 
 
 var app = express();
@@ -24,8 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/market', marketRouter);
+app.use('/simro', marketRouter);
 
 
 // catch 404 and forward to error handler
