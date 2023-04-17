@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/',dataSimro.Simro );
-router.get('/marche',dataSimro.Simro );
+router.get('/marche',dataSimro.SimroAll );
 
 
 
