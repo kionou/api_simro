@@ -10,25 +10,25 @@ const SimroRequette = require("../other/api");
 const dataSimro = class{
     
     static Simro = async (req =request,res =response)=>{
-        const marche = await SimroRequette.MarcheAll()
-        const produit = await SimroRequette.ProduitAll()
-        const region = await SimroRequette.RegionAll()
+        // const marche = await SimroRequette.MarcheAll()
+        // const produit = await SimroRequette.ProduitAll()
+        // const region = await SimroRequette.RegionAll()
         const gamme = await SimroRequette.GammeAll()
-        const prix = await SimroRequette.PrixAll()
+        // const prix = await SimroRequette.PrixAll()
 
 
-        if (marche,produit,region,gamme.success) {
+        if (gamme.success) {
        
             res.status(201).send({
-                marche:marche.success ,
-                produit:produit.success,
-                region:region.success,
+                // marche:marche.success ,
+                // produit:produit.success,
+                // region:region.success,
                 gamme:gamme.success,
-                prix:prix.success,
+                // prix:prix.success,
 
             })
         } else {
-            res.status(400).json({"Une erreur est surveni":marche.erreur})
+            res.status(400).json({"Une erreur est surveni":gamme.erreur})
         }
 
     }
