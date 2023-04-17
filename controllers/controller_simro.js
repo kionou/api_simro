@@ -43,14 +43,15 @@ const dataSimro = class{
             '/liste-marche/',
             '/liste-produit/',
             '/region/',
-            '/famille-produit/'
+            '/famille-produit/',
+            '/liste-dernier-prix-marche',
           ];
           
           axios . all ( endpoints . map ( ( endpoint ) => axiosClient . get ( endpoint ))). then ( 
-            axios . spread ( ({ data : user }, { data : repos }, { data : followers }, { data : following }) => { 
+            axios . spread ( ({ data : marche }, { data : produit }, { data : region }, { data : gamme } , { data : prix }) => { 
                 
-                console . log ({ user , repos , followers, following });
-                res.send({ user , repos , followers, following })
+                console . log ({ marche , produit , region, gamme  , prix});
+                res.send({marche , produit , region, gamme  , prix})
             })
           );
 
