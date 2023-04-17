@@ -70,7 +70,7 @@ const SimroRequette = class{
     static PrixAll=  ()=>{
         return new Promise(async (next)=>{
             axiosClient
-            .get('/liste-tout-prix-marche/')
+            .get('/liste-dernier-prix-marche/')
             .then(resultat=>{
                 // console.log('ss',resultat);
                 next({success:resultat.data})
