@@ -50,13 +50,26 @@ const dataSimro = class{
           axios . all ( endpoints . map ( ( endpoint ) => axiosClient . get ( endpoint ))). then ( 
             axios . spread ( ({ data : marche }, { data : produit }, { data : region }, { data : gamme } , { data : prix }) => { 
                 
-                console . log ({ marche , produit , region, gamme  , prix});
+                // console . log ({ marche , produit , region, gamme  , prix});
                 res.send({marche , produit , region, gamme  , prix})
             })
           );
 
         
 
+    }
+
+    static SimroMagasin = async (req =request,res =response)=>{
+        axiosClient
+        .get('/liste-magasin/')
+        .then(resultat=>{
+            res.status(201).send(resultat.data )
+        }).catch(err=>{
+            console.log("eee",err);
+            res.status(400).json({"Une erreur est surveni":err})
+
+       })
+    
     }
 
    
