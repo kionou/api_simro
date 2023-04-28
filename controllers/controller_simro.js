@@ -16,9 +16,11 @@ const dataSimro = class{
         const region = await SimroRequette.RegionAll()
         const gamme = await SimroRequette.GammeAll()
         const prix = await SimroRequette.PrixAll()
+        const prix_moy = await SimroRequette.PrixMoy
 
 
-        if (marche,produit,region,gamme.success) {
+
+        if (marche,produit,region,gamme.prix_moy.success) {
        
             res.status(201).send({
                 marche:marche.success ,
@@ -26,6 +28,7 @@ const dataSimro = class{
                 region:region.success,
                 gamme:gamme.success,
                 prix:prix.success,
+                prix_moy:prix_moy.success,
 
             })
         } else {
@@ -44,14 +47,15 @@ const dataSimro = class{
             '/liste-produit/',
             '/region/',
             '/famille-produit/',
-            '/liste-dernier-prix-marche',
+             '/liste-dernier-prix-marche/',
+             '/liste-prix-moyen-par-region/'
           ];
           
           axios . all ( endpoints . map ( ( endpoint ) => axiosClient . get ( endpoint ))). then ( 
-            axios . spread ( ({ data : marche }, { data : produit }, { data : region }, { data : gamme } , { data : prix }) => { 
+            axios . spread ( ({ data : marche }, { data : produit }, { data : region }, { data : gamme }, { data : prix }, { data : prix_moyen } ) => { 
                 
-                // console . log ({ marche , produit , region, gamme  , prix});
-                res.send({marche , produit , region, gamme  , prix})
+                 console . log ( marche );
+                 res.send({marche , produit , region, gamme ,prix ,prix_moyen })
             })
           );
 

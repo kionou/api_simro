@@ -82,6 +82,21 @@ const SimroRequette = class{
 
     }
 
+    static PrixMoy=  ()=>{
+        return new Promise(async (next)=>{
+            axiosClient
+            .get('/liste-prix-moyen-par-region/')
+            .then(resultat=>{
+                // console.log('ss',resultat);
+                next({success:resultat.data})
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({ erreur:err})
+           })
+        })
+
+    }
+
 
    
    
