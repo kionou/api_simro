@@ -98,6 +98,22 @@ const SimroRequette = class{
     }
 
 
+    static Texte=  ()=>{
+        return new Promise(async (next)=>{
+            axiosClient
+            .get('/liste-texte-accueil/')
+            .then(resultat=>{
+                // console.log('ss',resultat);
+                next({success:resultat.data})
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({ erreur:err})
+           })
+        })
+
+    }
+
+
    
    
    
