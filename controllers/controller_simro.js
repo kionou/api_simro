@@ -4,10 +4,6 @@ const axiosClient = require('../bin/data');
 const  axios  = require("axios");
 
 
-
-
-
-
 const dataSimro = class{
     
     static Simro = async (req =request,res =response)=>{
@@ -71,6 +67,67 @@ const dataSimro = class{
     static SimroMagasin = async (req =request,res =response)=>{
         axiosClient
         .get('/liste-magasin/')
+        .then(resultat=>{
+            res.status(201).send(resultat.data )
+        }).catch(err=>{
+            console.log("eee",err);
+            res.status(400).json({"Une erreur est surveni":err})
+
+       })
+    
+    }
+
+    static SimroProduit = async (req =request,res =response)=>{
+        axiosClient
+        .get('/liste-produit/')
+        .then(resultat=>{
+            res.status(201).send(resultat.data )
+        }).catch(err=>{
+            console.log("eee",err);
+            res.status(400).json({"Une erreur est surveni":err})
+
+       })
+    
+    } 
+     static SimroRegion = async (req =request,res =response)=>{
+        axiosClient
+        .get('/region/')
+        .then(resultat=>{
+            res.status(201).send(resultat.data )
+        }).catch(err=>{
+            console.log("eee",err);
+            res.status(400).json({"Une erreur est surveni":err})
+
+       })
+    
+    } 
+     static SimroGamme = async (req =request,res =response)=>{
+        axiosClient
+        .get('/famille-produit/')
+        .then(resultat=>{
+            res.status(201).send(resultat.data )
+        }).catch(err=>{
+            console.log("eee",err);
+            res.status(400).json({"Une erreur est surveni":err})
+
+       })
+    
+    } 
+     static SimroPrix = async (req =request,res =response)=>{
+        axiosClient
+        .get('/liste-dernier-prix-marche/')
+        .then(resultat=>{
+            res.status(201).send(resultat.data )
+        }).catch(err=>{
+            console.log("eee",err);
+            res.status(400).json({"Une erreur est surveni":err})
+
+       })
+    
+    }  
+    static SimroPrix_Moy = async (req =request,res =response)=>{
+        axiosClient
+        .get('/liste-prix-moyen-par-region/')
         .then(resultat=>{
             res.status(201).send(resultat.data )
         }).catch(err=>{

@@ -116,6 +116,14 @@ router.get('/', function(req, res, next) {
             "dernier_date": "2023-04-18"
         },
         {
+            "region": "NORD",
+            "code_produit": "ECH",
+            "produit": "Echalote (oignon local)",
+            "prix_moy": 500.0,
+            "nb_marche": 4,
+            "dernier_date": "2023-04-18"
+        },
+        {
             "region": "NORD-OUEST",
             "code_produit": "RLE",
             "produit": "Riz Local Etuvé",
@@ -123,14 +131,7 @@ router.get('/', function(req, res, next) {
             "nb_marche": 1,
             "dernier_date": "2023-03-25"
         },
-        {
-            "region": "NORD-OUEST",
-            "code_produit": "ECH",
-            "produit": "Echalote (oignon local)",
-            "prix_moy": 240.0,
-            "nb_marche": 1,
-            "dernier_date": "2023-02-24"
-        },
+     
         {
             "region": "NORD-OUEST",
             "code_produit": "OLO",
@@ -152,32 +153,27 @@ router.get('/', function(req, res, next) {
     
     ]
     
-    var produitsAvecPrix = [];
 
-    for (var i = 0; i < produits.length; i++) {
-        for (var j = 0; j < prix.length; j++) {
-            if (produits[i].nom_produit === prix[j].produit) {
-                produitsAvecPrix.push([ prix[j]]);
-                      
-                  }
-        }
-      
-    }
-    
-    const groupedData = produitsAvecPrix.reduce((acc, curr) => {
-        const productName = curr[0].produit;
-        if (!acc[productName]) {
-          acc[productName] = [];
-        }
-        acc[productName].push(curr[0]);
-        return acc;
-      }, {});
-      
-      const groupedArray = Object.keys(groupedData).map((key) => {
-        return groupedData[key];
-      });
+// produits.shift()
+ 
+    let produitPrix = produits.filter((produit) =>
+  prix.some((p) => p.code_produit === produit.code_produit)
+);
 
-res.send( { "data":groupedArray });
+    // const groupedData = produitsAvecPrix.reduce((acc, curr) => {
+    //     const productName = curr[0].produit;
+    //     if (!acc[productName]) {
+    //       acc[productName] = [];
+    //     }
+    //     acc[productName].push(curr[0]);
+    //     return acc;
+    //   }, {});
+      
+    //   const groupedArray = Object.keys(groupedData).map((key) => {
+    //     return groupedData[key];
+    //   });
+
+res.send( { "data":produits });
 
 
 });
